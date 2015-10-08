@@ -66,6 +66,11 @@ function onDeviceReady() {
         
         <script type="text/javascript" charset="utf-8">
         // Vibrate for 3 seconds
+		
+		document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    console.log(navigator.vibrate);
+}
 		function vibrar(){
 navigator.vibrate(3000);
 		}
