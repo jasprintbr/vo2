@@ -63,6 +63,14 @@ function onDeviceReady() {
     console.log("window.open works well");
 }
         </script>
+        
+        <script type="text/javascript" charset="utf-8">
+        // Vibrate for 3 seconds
+		function vibrar(){
+navigator.vibrate(3000);
+		}
+        </script>
+        
         <title>APP VO2 EXTREME</title>
     </head>
     <body>
@@ -72,7 +80,7 @@ function onDeviceReady() {
  <div style="background:#FF8000; float: left; width: 25%"><p align="CENTER"><a onClick="latitude()"><img src="img/1.png" alt="Meu Ponto" height="30" width="30"></a><h5 align="center">Meu Ponto</h5></p></div>
  <div style="background:#FF8000; float: left; width: 25%"><p align="CENTER"><img src="img/2.png" alt="Smiley face" height="30" width="30"><h5 align="center">Área Atleta</h5></p></div>
   <div style="background:#FF8000; float: left; width: 25%"><p align="CENTER"><img src="img/3.png" alt="Smiley face" height="30" width="30"><h5 align="center">Documentos</h5></p></div>
-   <div style="background:#FF8000; float: left; width: 25%"><p align="CENTER"><img src="img/4.png" alt="Smiley face" height="30" width="30"><h5 align="center">Fale Conosco</h5></p></div>
+   <div style="background:#FF8000; float: left; width: 25%"><p align="CENTER"><a onClick="vibrar()"><img src="img/4.png" alt="Smiley face" height="30" width="30"></a><h5 align="center">Fale Conosco</h5></p></div>
    
    
 <!--<a href="onDeviceReady()" ontouchend="window.open('http://google.com.br','_blank','location=yes','closebuttoncaption=Return');">Click Here</a>-->
