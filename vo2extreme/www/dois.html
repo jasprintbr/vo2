@@ -1,40 +1,150 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>CONSULTA EQUIPE</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+		
+		<link rel="stylesheet" href="css/jquery.mobile-1.1.2.min.css" />
+		<script src="js/jquery-1.7.2.min.js"></script>
+		<script src="js/jquery.mobile-1.1.2.min.js"></script>
+		
+        <title>Cadastro de Clientes</title>
+    </head>
 <body>
-  <p></p>
-    <div style="background:#FACC2E; width:100%; height:160">
-        <p></p><center><img src="icon.png" width="150" height="150"></center></p>
-    </div> 
- <div style="background:#FF8000; float: left; width: 100%"><p align="CENTER"><h4 align="center">ÁREA DO ATLETA</h4></p></div>
- <p></p>
- </div><br><br>
- <form role="form" action="http://vo2extreme.com.br/confirmacao/confirmar_equipe.php" method="post">
-<br>
+
+
+
+<div class="container">
+
+
+
+<h2 class="btn-warning">FORMUL&Aacute;RIO DE INSCRI&Ccedil;&Atilde;O - VO&sup2; EXTREME</h2><br><br>
+
+<p>
+<strong>DIA</strong> 07/11/2015<br>
+<strong>LOCAL</strong>: APROXIMADAMENTE 30 KM DE MACEIÓ<br>
+<strong>LARGADA</strong>: 9 HORAS<br>
+<strong>CATEGORIA</strong>: QUARTETO MISTO 10 ou 20 KM<br>
+<strong>VALOR DA INSCRIÇÃO</strong>: R$ 180,00 <br>
+<strong>MAPA EXTRA</strong>: R$ 10,00<br><br>
+</p>
+   
+    
+<form id="formCliente">
+  
   <div class="form-group">
-    <label for="cpf">CPF</label>
-     <input name="cpf" type="cpf" class="form-control input-lg" maxlength="11" required placeholder="Apenas números">
+    <label for="inputsm">Nome da Equipe:</label>
+    <input name="nome_equipe" type="text" class="form-control input-lg" id="inputsm" required>
   </div>
   
-  <p></p>
-      <div class="form-group">
-      <button type="submit" class="btn-success" >VERIFICAR</button>
-    </div>
+  <div class="form-group">
+   <label for="sel1">Percurso:</label>
+      <select required name="km" class="form-control input-lg" id="km">
+        <option value="0">...</option>
+        <option value=10>10KM</option>
+        <option value=20>20KM</option>
+      </select>
+  </div>
 
+<div class="form-group">
+  <label for="usr">Nome do Capit&atilde;o:</label>
+  <input name="nome_capitao" type="text" class="form-control input-lg" id="nome_capitao" required placeholder="Nome e sobrenome">
+</div>
+
+ <div class="form-group">
+    <label for="cpf">CPF</label>
+    <input name="cpf" id="cpf" type="cpf" class="form-control input-lg" maxlength="11" required placeholder="Apenas números">
+  </div>
+  
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input name="email" type="email" class="form-control input-lg" id="email" placeholder="Digite seu email" required>
+    </div>
+    
+    <div class="form-group">
+  <label for="usr">Telefone para contato:</label>
+  <input type="tel" id="tel" name="telefone_contato" class="form-control input-lg" onKeyPress="MascaraTelefone(form.telefone_contato);" maxlength="15"  onBlur="ValidaTelefone(form.telefone_contato);">
+  
+  
+</div>
+
+<div class="form-group">
+  <label for="usr">Telefone para Whatsapp</label>
+  <input name="telefone_whatsapp" type="tel" class="form-control input-lg" id="telefone_whatsapp" onKeyPress="MascaraTelefone(form.telefone_whatsapp);" maxlength="15"  onBlur="ValidaTelefone(form.telefone_whatsapp);">
+</div>
+
+<div class="form-group">
+   <label for="usr">Sua Equipe precisar&aacute; de mapa extra?</label>
+   <label class="radio-inline" >
+      <input name="mapa_extra" type="radio" value="0" id="mapa_extra" checked>Nenhum extra
+    </label>
+    <label class="radio-inline">
+      <input name="mapa_extra" type="radio" value="1" id="mapa_extra" >1 Mapa
+    </label>
+    <label class="radio-inline">
+      <input name="mapa_extra" type="radio" value="2" id="mapa_extra" >2 Mapas
+    </label>
+    <label class="radio-inline">
+      <input name="mapa_extra" type="radio" value="3" id="mapa_extra" >3 Mapas
+    </label>
+  </div><br>
+    <p align="justify" >"Declaro gozar de boa saúde e estar liberado por meu médico para participar e ter treinado apropriadamente para a prova, somos maiores de 18 anos (ou autorizados pelos representantes legais) e respondemos por nossos atos; 2. Estamos cientes que há riscos de acidentes durante esta competição. Declaramos assumir por nossas livres e espontâneas vontades todos os riscos envolvidos e suas consequências, caso venha acontecer durante a competição. Os riscos de acidentes nas atividades envolvidas nesta competição são significativos e envolve a possibilidade de acidentes automobilísticos, acidente de locomoção, risco de afogamento, deslocamentos, luxações, fraturas, queimaduras, mordidas de animais, picadas de insetos, contato com plantas tóxicas. Apesar de regras específicas, equipamentos e disciplina poderem reduzir os perigos inerentes e estes são por nossa conta e responsabilidade, o risco de sérios danos existe; 3. Em caso de acidente, eu e minha família isentamos os organizadores, seus colaboradores e patrocinadores, apoios e proprietários dos locais onde se dará à prova, de toda e qualquer responsabilidade legal por quaisquer danos materiais ou físicos que decorram dos mesmos; 4. Concordamos que a organização pode adiar, cancelar ou modificar o evento ou parte dele a qualquer tempo e por qualquer motivo; 5. No caso de condições climáticas adversas ou por razões de segurança, a organização se reserva o direito de cancelar e/ou alterar o percurso e/ou etapas sem aviso prévio e sem ônus à mesma, inclusive durante o andamento da prova; 6. Estou ciente que sou responsável por obter todas as informações sobre o evento, que consta no regulamento da prova; 7. Autorizo por este meio à utilização de qualquer dado, fotografia, filme ou outra gravação contendo imagens de minha participação neste evento em qualquer mídia seja impressa ou eletrônica, incluindo a Internet, sem geração de ônus para a organização, mídia e patrocinadores; 8. Como participante da prova, comprometo-me a respeitar a legislação vigente, seja ela municipal estadual ou federal, bem como as regras da organização do evento, assumindo toda e qualquer consequência de meus atos no período de duração da prova e naqueles que a antecedem e a sucedem, como reuniões com os organizadores e/ou outros participantes e que possam se relacionar com atividades da prova; informo abaixo está ciente, após ter lido este termo e tendo compreendido, entendo que estou desistindo de direitos substanciais através de minha assinatura, de forma livre e voluntaria, sem qualquer coação. 9. Estou ciente que no trekking poderá não haver abastecimento e minha equipe deverá levar hidratação e alimentação suficiente durante todo o percurso da prova."</p><br>
+  <span id="spryselect1">
+  <label for="ss">Termo de leitura do regulamento</label>
+  <select name="ss" id="ss" class="form-control input-lg">
+<option value="nao">...</option>
+<option value="ciente">Estou ciente de todo regulamento acima</option>
+  </select>
+  <span class="selectInvalidMsg">Op&ccedil;&atilde;o inv&aacute;lida.</span><span class="selectRequiredMsg">Selecione um item.</span></span>. <br>
+    
+<br>
+    <div class="form-group">
+  <label for="usr"><br>Sugest&atilde;o, cr&iacute;ticas, elogios, palavr&otilde;es e xingamentos</label><br>
+  <textarea name="sugestao" id="sugestao" class="form-control" rows="5"></textarea>
+    </div>
+    
+   
+<div class="control-group">
+					<button onclick="salvar()" type="submit" class="btn btn-sucess"><span>SALVAR</span></button>
+				</div>
+</div>
 </form>
 
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+  
     </body>
 
 </html>
+  
+        
+<script>
+	
+	function salvar(){
+		
+		var formula = $('#formCliente').serialize();
+		
+		$.ajax({
+		
+			type: 'POST',
+			data: formula,
+			url : 'http://vo2extreme.com.br/cadastro/cadastrar_app.php',
+			success:function(data){
+				
+				if(data == '' || data == 0){
+					alert('Ocorreu um erro no banco de Dados');
+					window.location = "";
+				}
+				
+				if(data == 1){
+					alert('Registro salvo com sucesso');
+					window.location = "";
+				}
+			}
+		
+		});
+		
+	}
+	
+</script>
