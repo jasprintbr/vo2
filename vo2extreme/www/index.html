@@ -1,103 +1,73 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <script type="text/javascript" charset="utf-8">
-        // onSuccess Callback
-// This method accepts a Position object, which contains the
-// current GPS coordinates
-//
-var onSuccess = function(position) {
-    alert('SUA LOCALIAÇÃO \n' +
-		  'Latitude: '          + position.coords.latitude          + '\n' +
-          'Longitude: '         + position.coords.longitude         + '\n' +
-          'Altitude: '          + position.coords.altitude          + '\n' +
-          'Accuracy: '          + position.coords.accuracy          + '\n' +
-          'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-          'Heading: '           + position.coords.heading           + '\n' +
-          'Speed: '             + position.coords.speed             + '\n' +
-          'Timestamp: '         + position.timestamp                + '\n');
-};
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+<title>Alerta</title>
+</head>
+<body>
 
-// onError Callback receives a PositionError object
-//
-function onError(error) {
-    alert('code: '    + error.code    + '\n' +
-          'message: ' + error.message + '\n');
-}
+<input type="button" value="Alerta" onClick="alerta()"><br/>
+<input type="button" value="Confirmação" onClick="confirmacao()"><br/>
+<input type="button" value="Prompt Endereço" onClick="PromptEndereco()"><br/>
+<input type="button" value="Beep" onClick="AlertaSom()"><br/>
+<input type="button" value="Vibrar" onClick="Vibrar()">
 
-function latitude(){
-navigator.geolocation.getCurrentPosition(onSuccess, onError);
-}
-        </script>
-        
-        
-<script type="text/javascript" charset="utf-8">
-window.addEventListener("batterycritical", onBatteryCritical, false);
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript">
 
-function onBatteryCritical(info) {
-    // Handle the battery critical event
-    alert("Battery Level Critical " + info.level + "%\nRecharge Soon!");
-}
-        </script>
-        
-        <script type="text/javascript" charset="utf-8">
-        // Vibrate for 3 seconds
-		
-		document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() {
-    console.log(navigator.vibrate);
-}
-		function vibrar(){
-navigator.vibrate(3000);
-		}
-        </script>
-        
-        <title>APP VO2 EXTREME</title>
-    </head>
-    <body>
-    <p></p>
-    <div style="background:#FACC2E; width:100%; height:160">
-        <p></p><center><img src="icon.png" width="150" height="150"></center></p>
-    </div> 
- <div style="background:#FF8000; float: left; width: 25%"><p align="CENTER"><a onClick="latitude()"><img src="img/1.png" alt="Meu Ponto" height="30" width="30"></a><h5 align="center">Meu Ponto</h5></p></div>
- <div style="background:#FF8000; float: left; width: 25%"><p align="CENTER"><a href="dois.html"><img src="img/4.png" alt="Smiley face" height="30" width="30"></a><h5 align="center">Área Atleta</h5></p></div>
-  <div style="background:#FF8000; float: left; width: 25%"><p align="CENTER"><a href="tres.html"><img src="img/3.png" alt="Smiley face" height="30" width="30"></a><h5 align="center">Documentos</h5></p></div>
-   <div style="background:#FF8000; float: left; width: 25%"><p align="CENTER"><a href="quatro.html"><img src="img/2.png" alt="Smiley face" height="30" width="30"></a><h5 align="center">CONTATO</h5></p></div>
-   
-   
-<!--<a href="onDeviceReady()" ontouchend="window.open('http://google.com.br','_blank','location=yes','closebuttoncaption=Return');">Click Here</a>-->
+            function alerta() {
+                navigator.notification.alert(
+                    'Mensagem do alerta!',
+                    function(){},
+                    'Título do alerta',
+                    'Fechar'
+                );
+            }
 
 
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-    </body>
-</html>
+            function confirmacao() {
+                navigator.notification.confirm(
+                    'Deseja executar a ação?',
+                     RespostaSim,
+                    'Pergunta',
+                    ['Sim','Não', 'Talvez']
+                );
+            }
+
+            function RespostaSim(botao){
+                if (botao == 1)
+                navigator.notification.alert('Ação executada!', function(){}, 'Sucesso', 'Fechar');
+            }
+
+            function PromptEndereco() {
+              navigator.notification.prompt(
+                  'Digite seu endereço',
+                  onPrompPress,
+                  'Endereço',
+                  ['Ok','Cancelar'],
+                  'Av. Paulista - 100'
+              );
+            }
+
+            function onPrompPress(resultado) {
+                navigator.notification.alert(
+                    "Você apertou o botão com índice " + resultado.buttonIndex + " você digitou " + resultado.input1,
+                    function(){},
+                    'Confirmação Prompt',
+                    'Fechar'
+                );
+            }
+
+            function AlertaSom() {
+                navigator.notification.beep(3);
+            }
+
+
+            function Vibrar() {
+                navigator.notification.vibrate(2000);
+            }
+
+</script>
+</body>
