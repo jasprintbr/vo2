@@ -8,66 +8,7 @@
 </head>
 <body>
 
-<input type="button" value="Alerta" onClick="alerta()"><br/>
-<input type="button" value="Confirmação" onClick="confirmacao()"><br/>
-<input type="button" value="Prompt Endereço" onClick="PromptEndereco()"><br/>
-<input type="button" value="Beep" onClick="AlertaSom()"><br/>
-<input type="button" value="Vibrar" onClick="Vibrar()">
-
-<script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript">
-
-            function alerta() {
-                navigator.notification.alert(
-                    'Mensagem do alerta!',
-                    function(){},
-                    'Título do alerta',
-                    'Fechar'
-                );
-            }
+<h1>OI</h1>
 
 
-            function confirmacao() {
-                navigator.notification.confirm(
-                    'Deseja executar a ação?',
-                     RespostaSim,
-                    'Pergunta',
-                    ['Sim','Não', 'Talvez']
-                );
-            }
-
-            function RespostaSim(botao){
-                if (botao == 1)
-                navigator.notification.alert('Ação executada!', function(){}, 'Sucesso', 'Fechar');
-            }
-
-            function PromptEndereco() {
-              navigator.notification.prompt(
-                  'Digite seu endereço',
-                  onPrompPress,
-                  'Endereço',
-                  ['Ok','Cancelar'],
-                  'Av. Paulista - 100'
-              );
-            }
-
-            function onPrompPress(resultado) {
-                navigator.notification.alert(
-                    "Você apertou o botão com índice " + resultado.buttonIndex + " você digitou " + resultado.input1,
-                    function(){},
-                    'Confirmação Prompt',
-                    'Fechar'
-                );
-            }
-
-            function AlertaSom() {
-                navigator.notification.beep(3);
-            }
-
-
-            function Vibrar() {
-                navigator.notification.vibrate(2000);
-            }
-
-</script>
 </body>
