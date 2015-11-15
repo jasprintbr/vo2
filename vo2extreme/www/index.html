@@ -3,6 +3,17 @@
 <head>
 <meta charset="utf-8" />
 <meta name="format-detection" content="telephone=no" />
+<script>
+  $("#ext-link").on("click"), function() {
+    if (typeof navigator !== "undefined" && navigator.app) {
+        // Mobile device.
+        navigator.app.loadUrl('http://www.google.com/', {openExternal: true});
+    } else {
+        // Possible web browser
+        window.open("http://www.google.com/", "_blank");
+    }
+});
+</script>
 <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 <title>Alerta</title>
 </head>
